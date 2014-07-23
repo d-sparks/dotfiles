@@ -1,0 +1,82 @@
+[
+  { "keys": ["ctrl+shift+t"], "command": "delete_trailing_spaces" },
+  {"keys": ["alt+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false}},
+  {"keys": ["alt+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true}},
+  {"keys": ["shift+alt+up"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": false, "extend": true}},
+  {"keys": ["shift+alt+down"], "command": "move", "args": {"by": "stops", "empty_line": true, "forward": true, "extend": true}},
+  {"keys": ["super+alt+q"], "command": "wrap_lines" , "args": {"width": 72}},
+  {"keys": ["super+control+q"], "command": "wrap_lines" , "args": {"width": 90}},
+
+  // Custom Vintage mode binding (command + i acts as escape)
+  { "keys": ["super+i"], "command": "exit_insert_mode",
+    "context":
+    [
+      { "key": "setting.command_mode", "operand": false },
+      { "key": "setting.is_widget", "operand": false }
+    ]
+  },
+
+  { "keys": ["super+i"], "command": "exit_visual_mode",
+    "context":
+    [
+      { "key": "setting.command_mode"},
+      { "key": "num_selections", "operand": 1},
+      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": false }
+    ]
+  },
+
+  { "keys": ["super+i"], "command": "hide_panel", "args": {"cancel": true},
+    "context":
+    [
+      { "key": "panel_visible", "operator": "equal", "operand": true }
+    ]
+  },
+  { "keys": ["super+i"], "command": "vi_cancel_current_action", "context":
+    [
+      { "key": "setting.command_mode" },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": false },
+      { "key": "vi_has_input_state" }
+    ]
+  },
+  { "keys": ["super+i"], "command": "single_selection", "context":
+    [
+      { "key": "num_selections", "operator": "not_equal", "operand": 1 }
+    ]
+  },
+  { "keys": ["super+i"], "command": "clear_fields", "context":
+    [
+      { "key": "has_next_field", "operator": "equal", "operand": true }
+    ]
+  },
+  { "keys": ["super+i"], "command": "clear_fields", "context":
+    [
+      { "key": "has_prev_field", "operator": "equal", "operand": true }
+    ]
+  },
+  { "keys": ["super+i"], "command": "hide_panel", "args": {"cancel": true},
+    "context":
+    [
+      { "key": "panel_visible", "operator": "equal", "operand": true }
+    ]
+  },
+  { "keys": ["super+i"], "command": "hide_overlay", "context":
+    [
+      { "key": "overlay_visible", "operator": "equal", "operand": true }
+    ]
+  },
+  { "keys": ["super+i"], "command": "hide_auto_complete", "context":
+    [
+      { "key": "auto_complete_visible", "operator": "equal", "operand": true }
+    ]
+  },
+
+  { "keys": ["super+r"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+  { "keys": ["ctrl+g"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+  // Move lines of code and create multiple cursors without leaving the home row
+  { "keys": ["ctrl+super+k"], "command": "swap_line_up" },
+  { "keys": ["ctrl+super+j"], "command": "swap_line_down" },
+  { "keys": ["ctrl+super+l"], "command": "indent" },
+  { "keys": ["ctrl+super+h"], "command": "unindent" },
+  { "keys": ["ctrl+shift+k"], "command": "select_lines", "args": {"forward": false} },
+  { "keys": ["ctrl+shift+j"], "command": "select_lines", "args": {"forward": true} }
+]

@@ -1,0 +1,15 @@
+{
+    "translate_tabs_to_spaces": false,
+    "tab_size": 8,
+    "settings":
+    {
+        "GoSublime":
+        {
+            "env":
+            {
+                "GOPATH": "/Users/daniel/Documents/Programming/Go/",
+                "GOBIN": "/Users/daniel/Documents/Programming/Go/"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+	"installed_packages":
+	[
+		"CoffeeScript",
+		"GoSublime",
+		"Markdown Preview",
+		"Package Control",
+		"Scheme",
+		"sublemacspro",
+		"SublimeREPL",
+		"TrailingSpaces"
+	]
+}

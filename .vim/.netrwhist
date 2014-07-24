@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/daniel/go/src/github.com'
+let g:netrw_dirhist_2='/Users/daniel/.ssh'
+let g:netrw_dirhist_3='/Users/daniel/dev/salt/salt/apps/clever-agents/etc/supervisor/conf.d'
+let g:netrw_dirhist_4='/Users/daniel/dev/salt/salt/apps/clever-agents/etc/supervisor'
+let g:netrw_dirhist_5='/Users/daniel/.vim/ftdetect'

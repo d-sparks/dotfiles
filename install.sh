@@ -10,3 +10,5 @@ cp -r * ~/.vim
 popd
 
 cp .vimrc ~/.vimrc
+cp .gitconfig ~/.gitconfig
+cp .bash_profile ~/.bash_profile

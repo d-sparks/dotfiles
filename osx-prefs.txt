@@ -1,5 +1,0 @@
-System Preferences > Desktop / Screensaver > Screensaver > Hot corners
-
-Auto hide dock (Apple menu)
-
-System Preferences > Mission Control > Show dashboard as space

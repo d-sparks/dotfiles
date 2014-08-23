@@ -5,6 +5,7 @@
 
   // Default binding for show goto function/class definition (super + r)
   { "keys": ["super+r"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+  { "keys": ["super+i", "super+d"], "command": "find_under_expand_skip" },
 
   // User vim arrows to move code in four directions
   { "keys": ["ctrl+super+k"], "command": "swap_line_up" },
@@ -18,5 +19,35 @@
 
   // Disabled bindings
   { "keys": ["super+]"], "command": "unbound" },
-  { "keys": ["super+["], "command": "unbound" }
+  { "keys": ["super+["], "command": "unbound" },
+
+  // Multi pane bindings
+  { "keys": ["ctrl+shift+h"], "command": "move_to_group", "args": { "group": 0 } },
+  { "keys": ["ctrl+shift+l"], "command": "move_to_group", "args": { "group": 1 } },
+  { "keys": ["ctrl+h"], "command": "focus_group", "args": { "group": 0 } },
+  { "keys": ["ctrl+l"], "command": "focus_group", "args": { "group": 1 } },
+
+  // Consider: super+alt+d, super+alt+w
+  {
+    "keys": ["super+1"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1]]
+    }
+  },
+  {
+    "keys": ["super+2"],
+    "command": "set_layout",
+    "args":
+    {
+      "cols": [0.0, 0.5, 1.0],
+      "rows": [0.0, 1.0],
+      "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+    }
+  }
+
 ]
+

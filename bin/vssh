@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/usr/bin/ssh -t $1 "bash -o vi"
+/usr/bin/ssh -t $1 "export VISUAL=vim && bash -o vi"

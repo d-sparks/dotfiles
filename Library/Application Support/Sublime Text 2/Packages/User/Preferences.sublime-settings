@@ -1,6 +1,9 @@
 {
+	"bold_folder_labels": true,
+	"caret_style": "phase",
 	"color_scheme": "Packages/Color Scheme - Default/Monokai Bright.tmTheme",
 	"detect_indentation": false,
+	"ensure_newline_at_eof_on_save": true,
 	"font_size": 13.0,
 	"ignored_packages":
 	[

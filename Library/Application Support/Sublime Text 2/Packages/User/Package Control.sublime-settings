@@ -1,13 +1,19 @@
 {
 	"installed_packages":
 	[
+		"AAAPackageDev",
+		"Bison",
 		"CoffeeScript",
+		"Dockerfile Syntax Highlighting",
 		"GoSublime",
 		"Markdown Preview",
+		"Navigation History",
 		"Package Control",
 		"Scheme",
 		"sublemacspro",
+		"SublimeLinter",
 		"SublimeREPL",
-		"TrailingSpaces"
+		"TrailingSpaces",
+		"VintageEx"
 	]
 }

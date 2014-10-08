@@ -1,4 +1,28 @@
 [
+
+  // For Explore package
+  { "keys": ["super+e"], "command": "explore" },
+  { "keys": ["enter"], "command": "open_single", "args": {},
+    "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.explore" }
+    ]
+  },
+  { "keys": ["escape"], "command": "goto_dotdot", "args": {},
+    "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.explore", "match_all": true },
+      { "key": "setting.command_mode", "operand": true, "match_all": true }
+    ]
+  },
+  { "keys": ["ctrl+p"], "command": "new_project_from_folder", "args": {},
+    "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.explore", "match_all": true },
+      { "key": "setting.command_mode", "operand": true, "match_all": true }
+    ]
+  },
+
   // Smart word wrapping
   {"keys": ["super+alt+q"], "command": "wrap_lines" , "args": {"width": 72}},
   {"keys": ["super+control+q"], "command": "wrap_lines" , "args": {"width": 90}},
@@ -50,4 +74,3 @@
   }
 
 ]
-

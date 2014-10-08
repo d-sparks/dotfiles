@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import json
 import os
 import shutil
@@ -13,8 +14,8 @@ import shutil
 """
 
 code_home = "/Users/sparks/dev"
-projects_path = "/Users/sparks/code/sublime-projects"
-sublime_session_file = "/Users/sparks/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session"
+projects_path = "/Users/sparks/code/sublime-projects-3"
+sublime_session_file = "/Users/sparks/Library/Application Support/Sublime Text 3/Local/Session.sublime_session"
 
 def tabular_json_encode(d): return json.dumps(d, sort_keys=True, indent=4).replace("    ", "\t")
 def repo_location(x): return "{path}/{repo}".format(path=code_home, repo=x)

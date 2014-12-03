@@ -1,27 +1,6 @@
-import json
 import os
-import shutil
 import sublime, sublime_plugin
-
-"""
-  To do:
-  ------
-  - Start at top of file
-  - Open by pressing enter
-  - Open options:
-    * Open in same view
-    * Open in new view
-    * Open in new window
-    * Copy path to clipboard
-    * More options?
-
-"""
-
-# State for the Explore plugin:
-
-code_home = "/Users/sparks/dev"
-projects_path = "/Users/sparks/code/sublime-projects"
-sublime_session_file = "/Users/sparks/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session"
+from sublime import load_settings
 
 def get_folder_name(path):
   if path == None: return None
@@ -73,10 +52,12 @@ class exploreCommand(sublime_plugin.TextCommand):
     new_view.run_command("ls", {"path": path or get_folder_name(self.view.file_name())})
     new_view.set_read_only(True)
     new_view.set_scratch(True)
+    new_view.settings().set("exploring", True)
 
 class lsCommand(sublime_plugin.TextCommand):
   def run(self, edit, path):
-    if not path: path = code_home
+    default_dir = load_settings("Explore (OSX).sublime-settings").get("default_dir")
+    if not path: path = default_dir
     self.view.set_read_only(False)
     self.view.path = os.path.normpath(path)
     self.view.erase(edit, sublime.Region(0, self.view.size()-1))
@@ -97,7 +78,7 @@ def get_listings(view):
   return os.path.normpath("{0}/{1}".format(view.path, clean_up_path(listing)))
 
 class openSingleCommand(sublime_plugin.TextCommand):
-  def run(self, edit, to_view="current_view"):
+  def run(self, edit, to_view="current_view", close_after=True):
     new_path = get_listings(self.view)
     listing_type = type_of_file(new_path)
     if listing_type == "dir":
@@ -105,20 +86,8 @@ class openSingleCommand(sublime_plugin.TextCommand):
       self.view.run_command("ls", {"path": new_path})
     elif listing_type in ["file", "executable"]:
       self.view.set_read_only(False)
-      self.view.window().open_file(new_path)
-
-def tabular_json_encode(d): return json.dumps(d, sort_keys=True, indent=4).replace("    ", "\t")
-
-class newProjectFromFolderCommand(sublime_plugin.TextCommand):
-  def run(self, edit):
-    self.writing_to=get_listings(self.view)
-    self.view.window().show_input_panel('', '', self.on_done, None, None)
-
-  def on_done(self, project_name):
-    project_file = "{0}/{1}.sublime-project".format(projects_path, project_name)
-    open(project_file, "w").write(tabular_json_encode({"folders" : [ {"path": self.writing_to }]}))
-    # session_dict = json.loads(open(sublime_session_file, "r").read())
-    # session_dict['workspaces']['recent_workspaces'].insert(0, project_file)
-    # shutil.move(sublime_session_file, sublime_session_file + "_back")
-    # open(sublime_session_file, "w").write(tabular_json_encode(session_dict))
-
+      window = self.view.window()
+      window.open_file(new_path)
+      if close_after:
+        window.focus_view(self.view)
+        window.run_command("close")

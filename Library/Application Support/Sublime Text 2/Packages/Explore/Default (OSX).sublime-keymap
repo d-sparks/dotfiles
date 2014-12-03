@@ -1,0 +1,26 @@
+[
+  // This keybinding only seems to work if you move it to your User bindings
+  { "keys": ["enter"], "command": "open_single", "args": {},
+    "context":
+    [
+      { "key": "setting.exploring", "operator": "equal", "operand": true },
+      { "key": "selector", "operator": "equal", "operand": "source.explore" }
+    ]
+  },
+
+  // These ones seem fine, though
+  { "keys": ["super+e"], "command": "explore" },
+  { "keys": ["super+enter"], "command": "open_single", "args": {"close_after": false},
+    "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.explore" }
+    ]
+  },
+  { "keys": ["escape"], "command": "goto_dotdot", "args": {},
+    "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.explore", "match_all": true },
+      { "key": "setting.command_mode", "operand": true, "match_all": true }
+    ]
+  }
+]

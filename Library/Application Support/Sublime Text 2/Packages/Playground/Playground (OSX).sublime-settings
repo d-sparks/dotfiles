@@ -1,0 +1,29 @@
+{
+  "sublime_dir": "/Users/sparks/Library/Application Support/Sublime Text 2",
+  "languages": {
+    "go": {
+      "name": "golang",
+      "compile": ["go", "run"],
+      "scratch": "golang.go",
+      "start_point": [4,1] // this feature doesn't work yet
+    },
+    "coffee": {
+      "name": "coffee",
+      "compile": ["/Users/sparks/nvm/v0.10.29/bin/coffee"],
+      "scratch": "coffee.coffee",
+      "start_point": [0, 0] // this feature doesn't work yet
+    },
+    "py": {
+      "name": "python",
+      "compile": ["python"],
+      "scratch": "python.py",
+      "start_point": [0, 0] // this feature doesn't work yet
+    },
+    "cpp": {
+      "name": "C++",
+      "compile": ["sh", "run.sh"],
+      "scratch": "main.cpp",
+      "start_point": [4,1] // this feature doesn't work yet
+    }
+  }
+}

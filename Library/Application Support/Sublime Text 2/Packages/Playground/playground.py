@@ -16,6 +16,16 @@ def extract_language(filename):
   return basename[basename.index(".")+1:].lower()
 def extract_timestamp(filename): return filename.split("/")[2].split("-")[1]
 
+class playgroundListener(sublime_plugin.EventListener):
+  def on_load(self, view):
+    if "tmp" not in view.file_name(): return
+    language = extract_language(view.file_name())
+    coordinates = load_settings("Playground (OSX).sublime-settings").get("languages")[language]["start_point"]
+    view.run_command("goto_line", {"line": coordinates[0]})
+    for i in range(0, coordinates[1]):
+      view.run_command("move", {'by': 'characters', 'extend': False, 'forward': True})
+    view.run_command("enter_insert_mode")
+
 class playgroundCommand(sublime_plugin.TextCommand):
   # Starts a playground
   def run(self, edit, language, insertion="asdf"):
@@ -28,13 +38,15 @@ class playgroundCommand(sublime_plugin.TextCommand):
     temporary_dir = "/tmp/{0}-{1}".format(language, timestamp)
     os.mkdir(temporary_dir)
     for temp_file in os.listdir(template_dir):
+      print os.path.join(template_dir, temp_file), os.path.join(temporary_dir, temp_file)
       shutil.copy(os.path.join(template_dir, temp_file), os.path.join(temporary_dir, temp_file))
-    for temp_file in os.listdir(template_dir + "-sym"):
-      os.symlink(os.path.join(template_dir + "-sym", temp_file), os.path.join(temporary_dir, temp_file))
+    try:
+      for temp_file in os.listdir(template_dir + "-sym"):
+        os.symlink(os.path.join(template_dir + "-sym", temp_file), os.path.join(temporary_dir, temp_file))
+    except: pass
 
     # Make the playground view
     new_view = self.view.window().open_file(os.path.join(temporary_dir, language_settings["scratch"]))
-    new_view.set_scratch(True)
 
     # If possible, move this to group 2 (right pane)
     try: new_view.window().run_command("move_to_group", { "group": 1 })
@@ -43,8 +55,7 @@ class playgroundCommand(sublime_plugin.TextCommand):
 class playRunCommand(sublime_plugin.TextCommand):
   # Runs the code in the current playground
   def run(self, edit):
-    if "tmp" not in self.view.file_name():
-      return
+    if "tmp" not in self.view.file_name(): return
     settings = load_settings("Playground (OSX).sublime-settings")
     language = extract_language(self.view.file_name())
     language_settings = settings.get("languages")[language]

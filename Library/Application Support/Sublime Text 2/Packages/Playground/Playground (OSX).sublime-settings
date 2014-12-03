@@ -11,7 +11,7 @@
       "name": "coffee",
       "compile": ["/Users/sparks/nvm/v0.10.29/bin/coffee"],
       "scratch": "coffee.coffee",
-      "start_point": [0, 0] // this feature doesn't work yet
+      "start_point": [4, 0] // this feature doesn't work yet
     },
     "py": {
       "name": "python",
@@ -23,7 +23,7 @@
       "name": "C++",
       "compile": ["sh", "run.sh"],
       "scratch": "main.cpp",
-      "start_point": [4,1] // this feature doesn't work yet
+      "start_point": [5,4] // this feature doesn't work yet
     }
   }
 }

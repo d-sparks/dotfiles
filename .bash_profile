@@ -1,4 +1,5 @@
-export CODE_HOME=~/dev/sparks
+export CODE_HOME=~/dev
+export GOGO=~/go/src/github.com/Clever
 
 showme() {
   # (just so you can do it from any virtualenv / working dir)
@@ -90,8 +91,8 @@ alias ls="ls -G"
 alias ssh="vssh"
 alias fabops="workon ops && cd ~/dev/fabulaws"
 alias ygrep='grep -inr --exclude-dir=node_modules --include=\*.{coffee,jade} --color'
-alias showme="fabops && showme"
-alias temp="curl -s  http://4ca.st/ajax.php?action=current\&zip=94105 | json current.temperature"
+alias showme='fabops && showme2'
+alias temp="curl -s  http://4ca.st/ajax.php?action=current\&zip=94107 | json current.temperature"
 
 # vim controls
 set -o vi
@@ -107,7 +108,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # go
 export GOPATH=~/go
-export GOROOT=/usr/local/Cellar/go/1.3.1/libexec
+export GOROOT=/usr/local/go # Cellar/go/1.3.1/libexec
 
 # path
 export PATH=$PATH:$GOPATH/bin:~/bin:~/dev/clever-ops/bin

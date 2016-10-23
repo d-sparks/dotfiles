@@ -1,0 +1,20 @@
+---------------------------------
+
+GMail:
+
+Excluded URLs: https?://mail.google.com/*
+Excluded Keys: ijklUI
+
+Custom key mappings:
+
+# Insert your preferred key mappings here.
+
+map d scrollPageDown
+map u scrollPageUp
+map f LinkHints.activateMode
+map F LinkHints.activeModeToOpenInNewTab
+map gg scrollToTop
+map G scrollToBottom
+
+---------------------------------
+

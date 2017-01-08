@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "async": "^0.2.6",
-    "underscore": "^1.4.4"
-  }
-}

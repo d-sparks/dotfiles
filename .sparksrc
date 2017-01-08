@@ -1,0 +1,57 @@
+###############
+#   GENERAL   #
+###############
+
+# Swap capslock/escape
+setxkbmap -option "caps:swapescape"
+
+# Right alt key is Tab
+xmodmap -e "keycode 108 = Tab"
+
+# colors
+export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\u\[\033[01;30m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+
+# aliases
+# alias ls="ls -G"
+
+
+####################
+#   VIM FRIENDLY   #
+####################
+
+set -o vi
+export VISUAL=vim
+export EDITOR=vim
+vssh() {
+  # sshs in and sets -o vi, and VISUAL=vim
+  /usr/bin/ssh -t $1 " \
+	  export VISUAL=vim && \
+	  export DOCKER_HOST=tcp://localhost:4243 && \
+	  bash -o vi"
+}
+alias ssh="vssh"
+
+
+###################
+#   CLEVER DAYS   #
+###################
+
+git-status() {
+  # for easier parsing into bash programs
+  git status | grep modified | sed -e "s/.*modified://" | xargs -n 1
+}
+
+tunnel() {
+  # tunnels to argument $1, optional argument $2 for port
+  SOURCE_PORT=27017
+  TARGET_PORT=30000
+  if [[ $2 ]]; then
+    TARGET_PORT=$2
+  fi
+  if [[ $3 ]]; then
+    SOURCE_PORT=$3
+  fi
+
+  /usr/bin/ssh -f ubuntu@$1 -L $TARGET_PORT:$1:$SOURCE_PORT -N
+}
+

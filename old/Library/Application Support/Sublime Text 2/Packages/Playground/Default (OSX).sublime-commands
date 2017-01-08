@@ -1,6 +1,0 @@
-[
-  { "caption": "Playground - Golang", "command": "playground", "args": { "language": "go" }},
-  { "caption": "Playground - Python", "command": "playground", "args": { "language": "py" }},
-  { "caption": "Playground - Coffee", "command": "playground", "args": { "language": "coffee" }},
-  { "caption": "Playground - C++", "command": "playground", "args": { "language": "cpp" }}
-]
